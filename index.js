@@ -7,9 +7,9 @@ const generatePage = require('./src/page-template.js')
 const employeeArray = [];
 
 const newManager = () => {
-    return inquirer.prompt ([
+    return inquirer.prompt([
         {
-            type:'input',
+            type: 'input',
             name: 'name',
             message: "What is the name of this team's manager?"
         },
@@ -29,11 +29,11 @@ const newManager = () => {
             message: "What is the manager's office number?"
         }
     ])
-    .then(({ name, id, email, officeNumber }) => {
-        const manager = new Manager (name, id, email, officeNumber);
-        console.log(manager);
-        employeeArray.push(manager);
-    })
+        .then(({ name, id, email, officeNumber }) => {
+            const manager = new Manager(name, id, email, officeNumber);
+            console.log(manager);
+            employeeArray.push(manager);
+        })
 }
 
 const newEmployee = () => {
@@ -42,8 +42,8 @@ const newEmployee = () => {
     Add a New Employee
     ==================
     `)
-   
-    return inquirer.prompt ([
+
+    return inquirer.prompt([
         {
             type: 'list',
             name: 'role',
@@ -84,46 +84,39 @@ const newEmployee = () => {
             default: false
         }
     ])
-    .then(employeeInfo => {
-        let {role, name, id, email, github, school, moreEmployees} = employeeInfo;
-        let employee;
+        .then(employeeInfo => {
+            let { role, name, id, email, github, school, moreEmployees } = employeeInfo;
+            let employee;
 
-        if (role === 'Engineer') {
-            employee = new Engineer(name, id, email, github);
-            console.log(employee);
-        } else if (role === 'Intern') {
-            employee = new Intern(name, id, email, school);
-            console.log(employee);
-        }
-        employeeArray.push(employee);
+            if (role === 'Engineer') {
+                employee = new Engineer(name, id, email, github);
+                console.log(employee);
+            } else if (role === 'Intern') {
+                employee = new Intern(name, id, email, school);
+                console.log(employee);
+            }
+            employeeArray.push(employee);
 
-       if (moreEmployees) {
-            return newEmployee(employeeArray);
-        } else {
-            return employeeArray;
-        }
-    });
-   
+            if (moreEmployees) {
+                return newEmployee(employeeArray);
+            } else {
+                return employeeArray;
+            }
+        });
+
 };
 
-const writeFile = data => {
-    fs.writeFile('./dist/index.html', data, err => {
-        if (err) {
-            console.log(err);
-            return;
-        } else {
-            console.log('Team Profile Generated! Check out index.html to see your team profile!')
-        }
-    })
-};
 newManager()
-.then(newEmployee)
-.then(employeeArray => {
-    return generatePage(employeeArray);
-})
-.then(pageHTML => {
-    return writeFile(pageHTML);
-})
-.catch(err => {
-    console.log(err);
-});
+    .then(newEmployee)
+    .then((employeeArray) => {
+        const pageHTML = generatePage(employeeArray);
+
+        fs.writeFile('./dist/index.html', pageHTML, err => {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            console.log('Team Profile Generated! Check out index.html to see your team profile!')
+        })
+    })
+ 

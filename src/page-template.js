@@ -1,35 +1,55 @@
 const createManager = function (manager) {
     return `
     <div class="card col s4">
-        <span class="card-title">Manager</span>
-            <h3>${manager.name}<h3>
-            <h4>ID: ${manager.id}</h4>
-            <h4>Email: <a href="mailto:${manager.email}">${manager.email}</a></h4>
-            <h4>Office: ${manager.officeNumber}</h4>
+        <h2 class="card-title teal darken-2 white-text">
+        <i class="material-icons">person_outline</i>
+        <span class="right">
+        </span>Manager</h2>
+        <div class="center-align">
+            <h4>${manager.name}<h4>
+            <h6>ID: ${manager.id}</h6>
+            <h6>Office: ${manager.officeNumber}</h6>
+            <div class="card-action">
+            <a href="mailto:${manager.email}">Email Me!<i class="material-icons">email</i></a>
+            </div>
+        </div>    
     </div>
     `;
 }
 
 const createEngineer = function (engineer) {
     return `
-    <div class="card sol s4">
-        <span class="card-title">Engineer</span>
-            <h3>${engineer.name}</h3>
-            <h4>ID: ${engineer.id}</h4>
-            <h4>Email: <a href="mailto:${engineer.email}">${engineer.email}</a></h4>
-            <h4>GitHub: <a href="https://github.com/${engineer.github}">${engineer.github}</a></h4>
+    <div class="card col s4">
+    <h2 class="card-title teal darken-2 white-text">
+    <i class="material-icons">laptop</i>
+    <span class="right">
+    </span>Engineer</h2>
+        <div class="center-align">
+            <h4>${engineer.name}</h3>
+            <h6>ID: ${engineer.id}</h4>
+            <h6>GitHub: <a href="https://github.com/${engineer.github}">${engineer.github}</a></h4>
+            <div class="card-action">
+            <a href="mailto:${engineer.email}">Email Me!<i class="material-icons">email</i></a>
+            </div>
+        </div>
     </div>
     `;
 }
 
 const createIntern = function (intern) {
     return `
-    <div class="card sol s4">
-        <span class="card-title">Engineer</span>
-            <h3>${intern.name}</h3>
-            <h4>ID: ${intern.id}</h4>
-            <h4>Email: <a href="mailto:${intern.email}">${intern.email}</a></h4>
-            <h4>School: ${intern.school}</h4>
+    <div class="card col s4">
+    <h2 class="card-title teal darken-2 white-text">
+    <i class="material-icons">school</i>
+    <span class="right">
+    </span>Intern</h2>
+        <div class="center-align">
+            <h4>${intern.name}</h3>
+            <h6>ID: ${intern.id}</h4>
+            <h6>School: ${intern.school}</h4>
+            <div class="card-action">
+            <a href="mailto:${intern.email}">Email Me!<i class="material-icons">email</i></a>
+        </div>
     </div>        
     `;
 }

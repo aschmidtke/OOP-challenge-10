@@ -1,6 +1,6 @@
 const createManager = function (manager) {
     return `
-    <div class="card col s4">
+    <div class="card small hoverable col s4">
         <h2 class="card-title teal darken-2 white-text">
         <i class="material-icons">person_outline</i>
         <span class="right">
@@ -9,9 +9,9 @@ const createManager = function (manager) {
             <h4>${manager.name}<h4>
             <h6>ID: ${manager.id}</h6>
             <h6>Office: ${manager.officeNumber}</h6>
-            <div class="card-action">
-            <a href="mailto:${manager.email}">Email Me!<i class="material-icons">email</i></a>
-            </div>
+                <div class="card-action">
+                <a href="mailto:${manager.email}">Email Me!<i class="material-icons">email</i></a>
+                </div>
         </div>    
     </div>
     `;
@@ -19,18 +19,18 @@ const createManager = function (manager) {
 
 const createEngineer = function (engineer) {
     return `
-    <div class="card col s4">
-    <h2 class="card-title teal darken-2 white-text">
-    <i class="material-icons">laptop</i>
-    <span class="right">
-    </span>Engineer</h2>
+    <div class="card small hoverable col s4">
+        <h2 class="card-title teal darken-2 white-text">
+        <i class="material-icons">laptop</i>
+        <span class="right">
+        </span>Engineer</h2>
         <div class="center-align">
-            <h4>${engineer.name}</h3>
+            <h4>${engineer.name}</h4>
             <h6>ID: ${engineer.id}</h4>
-            <h6>GitHub: <a href="https://github.com/${engineer.github}">${engineer.github}</a></h4>
-            <div class="card-action">
-            <a href="mailto:${engineer.email}">Email Me!<i class="material-icons">email</i></a>
-            </div>
+            <h6>GitHub: <a href="https://github.com/${engineer.github}" target="_blank">${engineer.github}</a></h4>
+                <div class="card-action">
+                <a href="mailto:${engineer.email}">Email Me!<i class="material-icons">email</i></a>
+                </div>
         </div>
     </div>
     `;
@@ -38,17 +38,18 @@ const createEngineer = function (engineer) {
 
 const createIntern = function (intern) {
     return `
-    <div class="card col s4">
+    <div class="card small hoverable col s4">
     <h2 class="card-title teal darken-2 white-text">
     <i class="material-icons">school</i>
     <span class="right">
     </span>Intern</h2>
         <div class="center-align">
-            <h4>${intern.name}</h3>
+            <h4>${intern.name}</h4>
             <h6>ID: ${intern.id}</h4>
             <h6>School: ${intern.school}</h4>
-            <div class="card-action">
-            <a href="mailto:${intern.email}">Email Me!<i class="material-icons">email</i></a>
+                <div class="card-action">
+                <a href="mailto:${intern.email}">Email Me!<i class="material-icons">email</i></a>
+            </div>
         </div>
     </div>        
     `;
@@ -95,11 +96,10 @@ const createTeamPage = function (employeeInfo) {
             <link rel="stylesheet" href="style.css">
         </head>
         <body>
-        <nav>
-        <div class="nav-wrapper" id="navbar">
+        <nav class="nav-wrapper" id="navi">
         <a class="brand-logo center">Your Team</a>
         </nav>
-            <div class="container">
+            <div class="container" id="container">
             <div class="row">
                 ${employeeInfo}
             </div>
